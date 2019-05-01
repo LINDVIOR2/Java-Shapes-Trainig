@@ -1,8 +1,10 @@
 package com.sub.menuadd;
 
+import java.util.Arrays;
+
 public enum AddEnumeration {
     Circle(1),
-    Square(2),
+    Rectangle(2),
     Triangle(3),
     Return(4),
     ;
@@ -12,16 +14,12 @@ public enum AddEnumeration {
     public int getAddPosition() {
         return this.addPosition;
     }
-    AddEnumeration(int i){
+
+    AddEnumeration(int i) {
         this.addPosition = i;
     }
 
     public static AddEnumeration getAddByPosition(int i) {
-        for (int j = 0; j < values().length; j++) {
-            if (values()[j].addPosition == i){
-                return values()[j];
-            }
-        }
-        return null;
+        return Arrays.stream(values()).filter(v -> v.getAddPosition() == i).findFirst().orElse(values()[3]);
     }
 }

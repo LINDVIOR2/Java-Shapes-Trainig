@@ -1,34 +1,22 @@
 package com.build.menu;
 
 import java.util.Scanner;
+
 import com.sub.menuadd.SubMenuAdd;
+import com.sub.menucalculate.Calculs;
+import com.sub.menuedit.SubMenuEdit;
 
 
 public class Main {
-
-//    public static void cls()
-//    {
-//        try
-//        {
-//            new ProcessBuilder("t","/c","cls").inheritIO().start().waitFor();
-//        }catch(Exception E)
-//        {
-//            System.out.println(E);
-//        }
-//    }
-
-
 
     public static void main(String[] args) {
 
         MenuMethod menu = new MenuMethod();
 
-
         Scanner scan = new Scanner(System.in);
         int postion;
 
         do {
-//            cls();
             menu.Menu();
             postion = scan.nextInt();
 
@@ -39,13 +27,16 @@ public class Main {
                     new SubMenuAdd().newSubMenu();
                     break;
                 case Edit:
-                    System.out.println("anyMethod1");
+                    new SubMenuEdit().editList();
                     break;
                 case Calculate:
-                    System.out.println("anyMethod2");
+                    new Calculs().resultOfCalculs();
                     break;
                 case Exit:
-                    System.out.println("anyMethod3");
+                    System.out.println("Closed");
+                    break;
+                case Reselect:
+                default:
                     break;
             }
         } while (postion != 4);

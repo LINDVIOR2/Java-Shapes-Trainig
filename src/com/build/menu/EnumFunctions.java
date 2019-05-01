@@ -1,11 +1,14 @@
 package com.build.menu;
 
 
+import java.util.Arrays;
+
 public enum EnumFunctions {
     Add(1),
     Edit(2),
     Calculate(3),
-    Exit(4);
+    Exit(4),
+    Reselect(5);
 
     private int position;
 
@@ -18,12 +21,8 @@ public enum EnumFunctions {
     }
 
     public static EnumFunctions getByPosition(int i) {
-        for (int j = 0; j < values().length; j++) {
-            if (values()[j].getPosition() == i) {
-                return values()[j];
-            }
-        }
-        return null;
+       return Arrays.stream(values()).filter(v -> v.getPosition() == i).findFirst().orElse(values()[4]);
+
     }
 }
 
